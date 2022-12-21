@@ -13,15 +13,12 @@ import { CryptoService } from '../../services/crypto.service';
 export class CryptoListComponent {
   readonly list$: Observable<CryptoModel[]> = this._cryptoService.getAll();
   public selected: CryptoModel[] = [];
-  readonly search: FormGroup = new FormGroup({ symbol: new FormControl() });
+  readonly symbol: FormControl = new FormControl()
 
   constructor(private _cryptoService: CryptoService) {
   }
 
-  onSearchSubmitted(search: FormGroup): void {
-  }
-
   onSelectionChange(event: any): void {
-    console.log(event)
+    this.selected.push(event.option.value);
   }
 }

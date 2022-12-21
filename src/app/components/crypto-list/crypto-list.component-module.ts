@@ -6,10 +6,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatOptionModule } from '@angular/material/core';
+import { MatChipsModule } from '@angular/material/chips';
 import { CryptoListComponent } from './crypto-list.component';
 
 @NgModule({
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, CommonModule, MatButtonModule, MatAutocompleteModule, MatOptionModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, CommonModule, MatButtonModule, MatAutocompleteModule, MatOptionModule, MatChipsModule],
   declarations: [CryptoListComponent],
   providers: [],
   exports: [CryptoListComponent]

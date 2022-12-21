@@ -1,20 +1,21 @@
-<form [formGroup]="search" (ngSubmit)="onSearchSubmitted(search)">
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>Choose an option</mat-label>
-      <input type="text"
-             placeholder="Pick one"
-             matInput
-             formControlName="symbol"
-             (optionSelected)="onSelectionChange($event)"
-             [matAutocomplete]="symbol">
-      <mat-autocomplete #symbol="matAutocomplete">
-        <mat-option *ngFor="let item of list$ | async" [value]="item.symbol">
-          {{item.symbol}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+<div>
+  <mat-chip-list aria-label="Fish selection">
+    <mat-chip *ngFor="let item of selected">
+     {{item}}
+    </mat-chip>
+</mat-chip-list>
 
-
-  </div>
-</form>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose an option</mat-label>
+    <input type="text"
+           placeholder="Pick one"
+           matInput
+           [formControl]="symbol"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectionChange($event)">
+      <mat-option *ngFor="let item of list$ | async" [value]="item.symbol">
+        {{item.symbol}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

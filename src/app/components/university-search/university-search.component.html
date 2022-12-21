@@ -8,14 +8,20 @@
 <mat-card>
   <mat-card-title></mat-card-title>
   <mat-card-content>
-    <mat-list role="list">
-      <mat-list-item role="listitem" *ngFor="let item of list$ | async">
-        {{item.name}}
-      </mat-list-item>
-    </mat-list>
+    <ng-container *ngIf="list$ | async as list; else nosearch">
+      <mat-list role="list" *ngIf="list.length; else noresults">
+        <mat-list-item role="listitem" *ngFor="let item of list">
+          {{item.name}}
+        </mat-list-item>
+      </mat-list>
 
-<!--    <ng-template *ngIf="search">-->
-<!--      Type any valid country in a searchbox above-->
-<!--    </ng-template>-->
+      <ng-template #noresults>
+        <p>Did not find any universities for this country :(</p>
+      </ng-template>
+    </ng-container>
+
+    <ng-template #nosearch>
+      <p>Type any valid country in a searchbox above</p>
+    </ng-template>
   </mat-card-content>
 </mat-card>
