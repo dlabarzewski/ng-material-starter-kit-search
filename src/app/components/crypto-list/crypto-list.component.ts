@@ -19,6 +19,9 @@ export class CryptoListComponent {
   }
 
   onSelectionChange(event: any): void {
-    this.selected.push(event.option.value);
+    const crypto = event.option.value;
+
+    if (!this.selected.includes(crypto))
+      this.selected.push(crypto);
   }
 }
